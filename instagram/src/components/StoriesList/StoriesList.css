@@ -1,0 +1,67 @@
+.stories-list {
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stories-scroll {
+  display: flex;
+  gap: 15px;
+  padding: 5px 0;
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  min-width: 70px;
+  transition: transform 0.2s ease;
+}
+
+.story-item:active {
+  transform: scale(0.95);
+}
+
+.story-item.active .story-avatar {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.story-avatar {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  padding: 3px;
+  background: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.story-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+.story-username {
+  font-size: 12px;
+  color: #262626;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Hide scrollbar */
+.stories-list::-webkit-scrollbar {
+  display: none;
+}
+
+.stories-list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
