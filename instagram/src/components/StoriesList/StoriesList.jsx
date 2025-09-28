@@ -8,7 +8,7 @@ const StoriesList = ({ stories, onStorySelect, currentUserIndex }) => {
         {stories.map((user, index) => (
           <div 
             key={user.id}
-            className={`story-item ${index === currentUserIndex ? 'active' : ''}`}
+            className={`story-item ${user.isActive ? 'active' : ''}`}
             onClick={() => onStorySelect(index)}
           >
             <div className="story-avatar">
@@ -20,6 +20,7 @@ const StoriesList = ({ stories, onStorySelect, currentUserIndex }) => {
                   e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiIGZpbGw9IiMzMzMiLz4KPHBhdGggZD0iTTMwIDM1QzM1LjUyMjggMzUgNDAgMzAuNTIyOCA0MCAyNUM0MCAxOS40NzcyIDM1LjUyMjggMTUgMzAgMTVDMjQuNDc3MiAxNSAyMCAxOS40NzcyIDIwIDI1QzIwIDMwLjUyMjggMjQuNDc3MiAzNSAzMCAzNVoiIGZpbGw9IiM2NjYiLz4KPGNpcmNsZSBjeD0iMzAiIGN5PSIyNSIgcj0iNSIgZmlsbD0iIzk5OSIvPgo8L3N2Zz4K';
                 }}
               />
+              {user.isActive && <div className="active-status"></div>}
             </div>
             <span className="story-username">{user.username}</span>
           </div>

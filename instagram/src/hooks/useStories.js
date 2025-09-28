@@ -10,6 +10,8 @@ export const useStories = (storiesData) => {
   const currentStory = currentUser?.stories[currentStoryIndex];
 
   const nextStory = useCallback(() => {
+    if (!currentUser) return;
+
     if (currentStoryIndex < currentUser.stories.length - 1) {
       setCurrentStoryIndex(prev => prev + 1);
       setProgress(0);
@@ -18,7 +20,6 @@ export const useStories = (storiesData) => {
       setCurrentStoryIndex(0);
       setProgress(0);
     } else {
-      
       setIsPlaying(false);
     }
   }, [currentStoryIndex, currentUserIndex, storiesData.length, currentUser]);
@@ -36,10 +37,12 @@ export const useStories = (storiesData) => {
   }, [currentStoryIndex, currentUserIndex, storiesData]);
 
   const goToStory = (userIndex, storyIndex = 0) => {
-    setCurrentUserIndex(userIndex);
-    setCurrentStoryIndex(storyIndex);
-    setProgress(0);
-    setIsPlaying(true);
+    if (userIndex >= 0 && userIndex < storiesData.length) {
+      setCurrentUserIndex(userIndex);
+      setCurrentStoryIndex(storyIndex);
+      setProgress(0);
+      setIsPlaying(true);
+    }
   };
 
   useEffect(() => {
